@@ -1,4 +1,58 @@
+type User @entity {
+  "This entity represents WBTC user"
+  id: ID!
+  "User address"
+  address: String!
+  "User balances"
+  balance: BigInt!
+  "User transaction"
+  transactionCount: Int!
+}
 
+type Minter @entity {
+  "This entity represents WBTC Minter"
+  id: ID!
+  "Minter address"
+  address: String!
+  "Total Minted"
+  totalMinted: BigInt!
+  "Total Burned"
+  totalBurned: BigInt!
+}
+
+type UserCounter @entity {
+  "This entity represents WBTC Counter of users"
+  id: ID!
+  "Count"
+  count: Int!
+}
+
+type MinterCounter @entity {
+  "This entity represents WBTC Minter"
+  id: ID!
+  "Count"
+  count: Int!
+}
+
+type TransferCounter @entity {
+  "This entity represents WBTC Transfer"
+  id: ID!
+  "Count"
+  count: Int!
+  "Total amount of Transferred WBTC"
+  totalTransferred: BigInt!
+}
+
+type TotalSupply @entity {
+  "This entity represents Total WBTC Supply"
+  id: ID!
+  "Supply"
+  supply: BigInt!
+  "Minted"
+  minted: BigInt!
+  "Burned"
+  burned: BigInt!
+}
 type ExampleEntity @entity {
   id: ID!
   count: BigInt!
