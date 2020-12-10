@@ -1,0 +1,47 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: WBTC
+    network: mainnet
+    source:
+      address: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      abi: WBTC
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Pause
+        - Unpause
+        - Burn
+        - Mint
+        - MintFinished
+        - OwnershipRenounced
+        - OwnershipTransferred
+        - Approval
+        - Transfer
+      abis:
+        - name: WBTC
+          file: WBTC\abis\WBTC.json
+      eventHandlers:
+        - event: Pause()
+          handler: handlePause
+        - event: Unpause()
+          handler: handleUnpause
+        - event: Burn(indexed address,uint256)
+          handler: handleBurn
+        - event: Mint(indexed address,uint256)
+          handler: handleMint
+        - event: MintFinished()
+          handler: handleMintFinished
+        - event: OwnershipRenounced(indexed address)
+          handler: handleOwnershipRenounced
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: WBTC\WBTC.wasm
